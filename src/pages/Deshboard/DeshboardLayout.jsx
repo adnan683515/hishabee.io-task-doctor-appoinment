@@ -62,6 +62,16 @@ const DeshboardLayout = () => {
         setCurrentPage(1);
     };
 
+    if (role === "DOCTOR") {
+        return (
+            <div className="p-4 bg-gray-50 min-h-screen flex items-center justify-center">
+                <h2 className="text-xl font-semibold text-gray-700">
+                    Only patients can view doctors here.
+                </h2>
+            </div>
+        );
+    }
+
     return (
         <div className="p-2 md:p-4 bg-gray-50 min-h-screen">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">Available Doctors</h2>

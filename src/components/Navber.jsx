@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Menu, X, Stethoscope } from "lucide-react";
-import { Link, useNavigate } from "react-router";
+import { href, Link, useNavigate } from "react-router";
 import AuthHook from "../hooks/AuthHook";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Doctors", href: "#doctors" },
-  { label: "Appointments", href: "#appointments" },
   { label: "Dashboard", href: "/deshboard" },
-  { label: "Contact", href: "#contact" },
+  {label : "About" , href: '/'},
+  {label : "Contact", href:"/"}
 ];
 
 export default function Navber() {
