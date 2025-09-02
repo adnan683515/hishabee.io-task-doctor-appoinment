@@ -7,7 +7,7 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "Doctors", href: "#doctors" },
   { label: "Appointments", href: "#appointments" },
-  { label: "Dashboard", href: "#dashboard" },
+  { label: "Dashboard", href: "/deshboard" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -20,6 +20,7 @@ export default function Navber() {
 
   const handleLogout = () => {
     localStorage.removeItem("Token")
+    localStorage.removeItem("role")
     setToken("")
     navigate('/auth/Login')
 
