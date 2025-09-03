@@ -2,24 +2,30 @@ import React, { useState } from "react";
 import { Menu, X, Stethoscope } from "lucide-react";
 import { Link, useNavigate } from "react-router";
 import AuthHook from "../hooks/AuthHook";
+import toast from "react-hot-toast";
 
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Dashboard", href: "/deshboard" },
-  {label : "About" , href: '/'},
-  {label : "Contact", href:"/"}
+  { label: "About", href: '/' },
+  { label: "Contact", href: "/" }
 ];
 
 export default function Navber() {
   const [open, setOpen] = useState(false);
-  const { token, setToken } = AuthHook();
+  const { token, setToken ,handleScroll } = AuthHook();
   const navigate = useNavigate()
 
-  const handleNavClick = () => setOpen(false);
+  const handleNavClick = () => {
+
+    setOpen(false)
+    
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("Token")
     localStorage.removeItem("role")
+    toast.error("Logout Successfully!")
     setToken("")
     navigate('/auth/Login')
 
@@ -29,8 +35,8 @@ export default function Navber() {
     <header className="sticky top-0 z-900 overflow-hidden border-b border-gray-100 bg-white/80  w-[100%] supports-[backdrop-filter]:bg-white/70 backdrop-blur-2xl dark:bg-gray-900/80 dark:border-gray-800">
       <nav className="flex mx-auto items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
 
-        <a
-          href="#"
+        <Link
+          to={'/'}
           className="group flex items-center gap-2 rounded-xl px-2 py-1 transition hover:bg-gray-100/70 dark:hover:bg-gray-800/70"
           aria-label="Doctor Appointment Home"
         >
@@ -43,7 +49,7 @@ export default function Navber() {
             </p>
             <p className="text-xs text-gray-500 dark:text-gray-400">Appointments</p>
           </div>
-        </a>
+        </Link>
 
 
         <ul className="hidden items-center gap-2 md:flex">
@@ -51,7 +57,10 @@ export default function Navber() {
             <li key={item.label}>
               <Link
                 to={item.href}
-                onClick={handleNavClick}
+                onClick={()=>{
+                  item == 'Contact' ? handleScroll() : handleNavClick()
+                
+                }} 
                 className="rounded-xl px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
               >
                 {item.label}

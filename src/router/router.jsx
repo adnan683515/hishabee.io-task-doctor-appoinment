@@ -7,6 +7,7 @@ import DeshBoard from "../pages/Deshboard/DeshBoard";
 import DeshboardLayout from "../pages/Deshboard/DeshboardLayout";
 import PrivetRouter from "./PrivetRouter";
 import Appointments from "../pages/Patient/Appointments";
+import Error404 from "../Error404";
 
 export const router = createBrowserRouter([
     {
@@ -44,6 +45,6 @@ export const router = createBrowserRouter([
     }
     , {
         path: "/*",
-        element: <h1>Error 404</h1>
+        Component : Error404
     }
 ])

@@ -65,14 +65,14 @@ const DeshboardLayout = () => {
 
     if (role === "DOCTOR") {
         return (
-            <div className="p-4 bg-gray-50 min-h-screen flex items-center justify-center">
+            <div className="p-4 bg-gray-50 min-h-screen ">
                 <DoctorDashboard></DoctorDashboard>
             </div>
         );
     }
 
     return (
-        <div className="p-2 md:p-4 bg-gray-50 min-h-screen">
+        <div className="p-2 md:p-4 bg-gray-50 ">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">Available Doctors</h2>
 
             <div className="flex flex-col md:flex-row gap-2 md:gap-3 mb-4 p-1 md:p-2">

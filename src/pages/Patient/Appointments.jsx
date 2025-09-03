@@ -50,8 +50,8 @@ const Appointments = () => {
                             setCurrentPage(1);
                         }}
                         className={`px-2 py-1 rounded text-xs sm:text-sm ${statusFilter === status
-                                ? "bg-indigo-500 text-white"
-                                : "bg-gray-200"
+                            ? "bg-indigo-500 text-white"
+                            : "bg-gray-200"
                             }`}
                     >
                         {status === "" ? "All" : status.charAt(0) + status.slice(1).toLowerCase()}
@@ -84,7 +84,7 @@ const Appointments = () => {
             )}
 
             {totalPages > 1 && (
-                <div className="flex gap-1 sm:gap-2 justify-center mt-3">
+                <div className="flex gap-1 sm:gap-2 justify-center mt-3 flex-wrap">
                     <button
                         onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                         disabled={currentPage === 1}
@@ -92,16 +92,17 @@ const Appointments = () => {
                     >
                         Prev
                     </button>
-                    {[...Array(totalPages)].map((_, idx) => (
+
+                    {Array.from({ length: totalPages }, (_, idx) => idx + 1).map((pageNum) => (
                         <button
-                            key={idx}
-                            onClick={() => setCurrentPage(idx + 1)}
-                            className={`px-2 py-1 text-xs sm:text-sm rounded border ${currentPage === idx + 1 ? "bg-indigo-500 text-white" : ""
-                                }`}
+                            key={pageNum}
+                            onClick={() => setCurrentPage(pageNum)}
+                            className={`px-2 py-1 text-xs sm:text-sm rounded border transition ${currentPage === pageNum ? "bg-indigo-500 text-white" : "bg-white"}`}
                         >
-                            {idx + 1}
+                            {pageNum}
                         </button>
                     ))}
+
                     <button
                         onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
                         disabled={currentPage === totalPages}

@@ -30,7 +30,7 @@ const AppointmentModal = ({ isOpen, close, doctorInfo }) => {
 
         }
         catch (err) {
-            console.log(err)
+            toast.error(err?.response?.data.message)
         }
         close();
     };

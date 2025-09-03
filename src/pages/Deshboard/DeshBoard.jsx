@@ -5,7 +5,7 @@ import AuthHook from "../../hooks/AuthHook";
 
 const DeshBoard = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const { role ,setToken } = AuthHook();
+    const { role, setToken } = AuthHook();
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -35,7 +35,12 @@ const DeshBoard = () => {
                 <nav className="mt-6 flex flex-col gap-2 px-2">
                     <Link to="/" className="px-4 py-2 rounded hover:bg-indigo-600 transition">Home</Link>
 
-                    <Link to="/deshboard/appoinment" className="px-4 py-2 rounded hover:bg-indigo-600 transition">Appointments</Link>
+                    {
+                        role == 'PATIENT' && <Link to="/deshboard/appoinment" className="px-4 py-2 rounded hover:bg-indigo-600 transition">Appointments</Link>
+
+                    }
+                    
+
                     <button
                         onClick={handleLogout}
                         className="flex items-center gap-1 px-4 py-2 rounded hover:bg-red-600 transition w-full"
