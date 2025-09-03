@@ -9,9 +9,9 @@ import AuthHook from "../hooks/AuthHook";
 export default function Login() {
 
     const axiosUrl = AxiosHookInstance()
-    const [error,setErrror] = useState("")
+    const [error, setErrror] = useState("")
     const navigate = useNavigate()
-    const {setToken} = AuthHook()
+    const { setToken } = AuthHook()
     const {
         register,
         handleSubmit,
@@ -19,22 +19,30 @@ export default function Login() {
     } = useForm();
 
     const onSubmit = async (data) => {
+
         setErrror("")
-        try{
-            const result = await axiosUrl.post('/auth/login',data)
-            console.log("logged in result",result?.data?.data?.token)
-            if(result?.data?.data?.token){
-                setToken(result?.data?.data?.token)
-                localStorage.setItem('Token',result?.data?.data?.token)
-                localStorage.setItem("role",data?.role)
-                toast.success("logged in successfully!")
-                navigate('/')
+        try {
+            const result = await axiosUrl.post('/auth/login', data)
+            console.log("logged in result", result?.data?.data?.user?.role)
+
+            if (data?.role == result?.data?.data?.user?.role) {
+                if (result?.data?.data?.token) {
+                    setToken(result?.data?.data?.token)
+                    localStorage.setItem('Token', result?.data?.data?.token)
+                    localStorage.setItem("role", result?.data?.data?.user?.role)
+                    toast.success("logged in successfully!")
+                    navigate('/')
+                }
             }
+            else{
+                setErrror("Your Role Doesn't Match!")
+            }
+
         }
-        catch(err){
+        catch (err) {
             setErrror(err.message)
         }
-        
+
     };
 
     return (

@@ -5,12 +5,13 @@ import AuthHook from "../../hooks/AuthHook";
 
 const DeshBoard = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const { role, } = AuthHook();
+    const { role ,setToken } = AuthHook();
     const navigate = useNavigate();
 
     const handleLogout = () => {
         localStorage.removeItem('Token')
         localStorage.removeItem('role')
+        setToken(null)
         navigate("/auth/Login");
     };
 

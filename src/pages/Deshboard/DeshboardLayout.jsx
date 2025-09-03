@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import AuthHook from "../../hooks/AuthHook";
 import Loader from "../../components/Loader";
 import BookAppointment from "../Patient/BookAppointment";
+import DoctorDashboard from "../Doctor/DoctorDashboard";
 
 const DeshboardLayout = () => {
     const axiosUrl = AxiosHookInstance();
@@ -65,9 +66,7 @@ const DeshboardLayout = () => {
     if (role === "DOCTOR") {
         return (
             <div className="p-4 bg-gray-50 min-h-screen flex items-center justify-center">
-                <h2 className="text-xl font-semibold text-gray-700">
-                    Only patients can view doctors here.
-                </h2>
+                <DoctorDashboard></DoctorDashboard>
             </div>
         );
     }

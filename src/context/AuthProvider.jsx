@@ -20,9 +20,9 @@ const AuthProvider = ({ children }) => {
 
     const value = { token ,setToken , role,setRole ,loading}
     return (
-        <AuthContext value={value}>
+        <AuthContext.Provider  value={value}>
             {children}
-        </AuthContext>
+        </AuthContext.Provider>
     );
 };
 

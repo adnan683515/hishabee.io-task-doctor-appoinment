@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Menu, X, Stethoscope } from "lucide-react";
-import { href, Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import AuthHook from "../hooks/AuthHook";
 
 const navItems = [
