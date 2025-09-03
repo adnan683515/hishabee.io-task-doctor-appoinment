@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Dashboard", href: "/deshboard" },
-  { label: "About", href: '/' },
+  { label: "About", href: '/aboutPage' },
   { label: "Contact", href: "/" }
 ];
 

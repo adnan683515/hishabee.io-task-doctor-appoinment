@@ -8,6 +8,7 @@ import DeshboardLayout from "../pages/Deshboard/DeshboardLayout";
 import PrivetRouter from "./PrivetRouter";
 import Appointments from "../pages/Patient/Appointments";
 import Error404 from "../Error404";
+import AboutPage from "../pages/AboutPage/AboutPage";
 
 export const router = createBrowserRouter([
     {
@@ -24,6 +25,9 @@ export const router = createBrowserRouter([
             }, {
                 path: "/auth/Register",
                 Component: Register
+            },{
+                path:"/aboutPage",
+                Component : AboutPage
             }
         ]
 

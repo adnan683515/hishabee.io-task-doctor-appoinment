@@ -5,9 +5,9 @@ const Contact = () => {
     const {contactRef} = AuthHook()
     
     return (
-        <div ref={contactRef} className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col lg:flex-row w-[96%] mx-auto gap-10 min-h-[500px]">
-
+        <div ref={contactRef} className="bg-gray-50 relative overflow-hidden py-16 px-4 sm:px-6 lg:px-0">
+            <div  data-aos="zoom-out-right" className="flex flex-col lg:flex-row w-[96%] mx-auto gap-10 min-h-[500px]">
+ 
                 <div className="w-full lg:w-1/2 flex flex-col justify-center gap-4">
                     <h2 className="text-3xl sm:text-4xl font-bold text-indigo-700 mb-4">
                         Contact Us

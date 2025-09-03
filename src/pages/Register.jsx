@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import { AxiosHookInstance } from "../hooks/AxiosHook";
 import { toast } from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
+import Loader from './../components/Loader';
 
 export default function Register() {
     const [tab, setTab] = useState("patient");
@@ -48,7 +49,9 @@ export default function Register() {
     };
 
     if (isLoading) {
-        return <h1>loading.......</h1>
+        return <div>
+            <Loader></Loader>
+        </div>
     }
     return (
         <div className="flex my-10 relative overflow-hidden items-center justify-center px-4">
