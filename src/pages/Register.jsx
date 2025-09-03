@@ -9,6 +9,7 @@ import Loader from './../components/Loader';
 export default function Register() {
     const [tab, setTab] = useState("patient");
     const axiosUrl = AxiosHookInstance();
+    const [registerStart,setRegisterStart] = useState(false)
 
     const {
         register,
@@ -28,7 +29,7 @@ export default function Register() {
 
 
     const onSubmit = async (data) => {
-        console.log("data", data)
+        setRegisterStart(true)
         try {
             const url =
                 tab === "patient"
@@ -45,6 +46,9 @@ export default function Register() {
             }
         } catch (err) {
             toast.error(err.response?.data?.message || "Registration Failed");
+        }
+        finally{
+            setRegisterStart(false)
         }
     };
 
@@ -183,7 +187,7 @@ export default function Register() {
                         type="submit"
                         className="w-full rounded-2xl bg-indigo-600 px-4 py-2 font-semibold text-white shadow-sm transition hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     >
-                        Register
+                        { registerStart ? 'Registration....' : 'Register' }
                     </button>
 
                     <div className="mt-4 text-center text-sm text-gray-300 dark:text-gray-400">

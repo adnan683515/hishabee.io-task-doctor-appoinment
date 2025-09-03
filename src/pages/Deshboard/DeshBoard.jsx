@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Outlet, Link, useNavigate } from "react-router";
 import { Menu, X, LogOut } from "lucide-react";
 import AuthHook from "../../hooks/AuthHook";
+import toast from "react-hot-toast";
 
 const DeshBoard = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +13,7 @@ const DeshBoard = () => {
         localStorage.removeItem('Token')
         localStorage.removeItem('role')
         setToken(null)
+        toast.error("Logged Out successfully!")
         navigate("/auth/Login");
     };
 

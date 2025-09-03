@@ -12,6 +12,7 @@ export default function Login() {
     const [error, setErrror] = useState("")
     const navigate = useNavigate()
     const { setToken } = AuthHook()
+    const [loginStart, setLoginStart] = useState(false)
     const {
         register,
         handleSubmit,
@@ -19,7 +20,7 @@ export default function Login() {
     } = useForm();
 
     const onSubmit = async (data) => {
-
+        setLoginStart(true)
         setErrror("")
         try {
             const result = await axiosUrl.post('/auth/login', data)
@@ -34,13 +35,16 @@ export default function Login() {
                     navigate('/')
                 }
             }
-            else{
+            else {
                 setErrror("Your Role Doesn't Match!")
             }
 
         }
         catch (err) {
             setErrror(err.message)
+        }
+        finally {
+            setLoginStart(false)
         }
 
     };
@@ -117,7 +121,8 @@ export default function Login() {
                         type="submit"
                         className="w-full rounded-2xl bg-indigo-600 px-4 py-2 font-semibold text-white shadow-sm transition hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     >
-                        Log in
+                        {loginStart  ? 'Login....' : 'Log in'}
+                
                     </button>
                     <div className="mt-4 text-center text-sm text-gray-300 dark:text-gray-400">
                         Don&apos;t have an account?{" "}
